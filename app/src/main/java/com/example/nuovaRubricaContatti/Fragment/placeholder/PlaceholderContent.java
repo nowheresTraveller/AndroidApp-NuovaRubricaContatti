@@ -72,6 +72,10 @@ public class PlaceholderContent {
 
         }
 
+        public String getFirstContent (){
+            return firstContent;
+        }
+
         @Override
         public String toString() {
             return firstContent+" "+secondContent;

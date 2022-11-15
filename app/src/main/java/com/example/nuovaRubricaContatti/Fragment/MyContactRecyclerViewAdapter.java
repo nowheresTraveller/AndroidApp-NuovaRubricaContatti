@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent;
 import com.example.nuovaRubricaContatti.databinding.*;
 import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent.PlaceholderItem;
 
@@ -15,16 +17,18 @@ import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent.
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContactRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private  List<PlaceholderItem> mValues;
 
     public MyContactRecyclerViewAdapter(List<PlaceholderItem> items) {
         mValues = items;
+    }
+
+    public void setFilteredList(List <PlaceholderContent.PlaceholderItem> list){
+        this.mValues=list;
+        notifyDataSetChanged();
     }
 
     @Override
