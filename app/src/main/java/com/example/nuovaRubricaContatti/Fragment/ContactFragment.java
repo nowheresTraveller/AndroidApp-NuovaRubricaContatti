@@ -7,32 +7,30 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.nuovaRubricaContatti.R;
 import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * A fragment representing a list of Items.
  */
 public class ContactFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
+    private static final String ARG_COLUMN_COUNT = "column-count";
+    private int mColumnCount = 1;
+    public static ArrayList<PlaceholderContent.PlaceholderItem> itemArrayList;
+    public static MyContactRecyclerViewAdapter myRecyclerView;
+
+    public static MyContactRecyclerViewAdapter myContactRecyclerViewAdapter;
+
+
     public ContactFragment() {
     }
 
@@ -78,13 +76,15 @@ public class ContactFragment extends Fragment {
             TextView secondText= secondView.findViewById(R.id.secondText);
 
 
-            List<PlaceholderContent.PlaceholderItem> miaProva = new ArrayList<>();
-            miaProva.add (new PlaceholderContent.PlaceholderItem("0",(String)firstText.getText(), (String)secondText.getText(),"clicca","clicca","clicca"));
-            miaProva.add (new PlaceholderContent.PlaceholderItem("1",(String)firstText.getText(), (String)secondText.getText(),"clicca","clicca","clicca"));
-            miaProva.add (new PlaceholderContent.PlaceholderItem("2",(String)firstText.getText(), (String)secondText.getText(),"clicca","clicca","clicca"));
-            miaProva.add (new PlaceholderContent.PlaceholderItem("3",(String)firstText.getText(), (String)secondText.getText(),"clicca","clicca","clicca"));
-            recyclerView.setAdapter(new MyContactRecyclerViewAdapter(miaProva));
-         }
+            itemArrayList= new ArrayList<>();
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("0","mattino", (String)secondText.getText(),"clicca","clicca","clicca"));
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("1","ciao", (String)secondText.getText(),"clicca","clicca","clicca"));
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("2","mondo", (String)secondText.getText(),"clicca","clicca","clicca"));
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("3","sera", (String)secondText.getText(),"clicca","clicca","clicca"));
+            myRecyclerView =new MyContactRecyclerViewAdapter(itemArrayList);
+            recyclerView.setAdapter(myRecyclerView);
+            }
         return view;
     }
+
 }

@@ -1,53 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditContactActivity">
+    tools:context=".EditContactActivity"
+    android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/okButton"
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.nuovaRubricaContatti.Fragment.addEditFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ok"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="287dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <Button
-        android:id="@+id/annullaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="annulla"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="287dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="390dp"
-        android:layout_height="54dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/titolo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="modifica contatto"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="87dp" />
+        android:layout_gravity="center_vertical"
+        tools:layout="@layout/fragment_add_edit" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
+
+
