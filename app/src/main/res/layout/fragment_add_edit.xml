@@ -94,7 +94,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="phone"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_margin="5sp"
+            android:background="@color/white"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/labelEmailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="e-mail"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
                 android:textAlignment="center" />
         </TableRow>
 
@@ -114,7 +136,7 @@
                 android:text="ok" />
 
             <Button
-                android:id="@+id/deleteButton"
+                android:id="@+id/cancelButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"

@@ -23,13 +23,12 @@
         android:text="secondoTesto" />
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/lookButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
-        android:layout_weight="1"
-        android:text="elimina"
+        android:layout_marginRight="5dp"
+        android:text="look"
         android:textSize="8dp" />
 
     <Button
@@ -41,14 +40,17 @@
         android:text="edit"
         android:textSize="8dp" />
 
+
+
     <Button
-        android:id="@+id/lookButton"
+        android:id="@+id/cancelButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:text="look"
-        android:textSize="8dp" />
+        android:layout_marginRight="15dp"
+        android:layout_weight="1"
+        android:text="elimina"
+        android:textSize="8dp"/>
 
 
 </LinearLayout>

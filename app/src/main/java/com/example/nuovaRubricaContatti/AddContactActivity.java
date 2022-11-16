@@ -41,7 +41,7 @@ public class AddContactActivity extends AppCompatActivity {
             }
         });
 
-        View cancelButton = findViewById(R.id.deleteButton);
+        View cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

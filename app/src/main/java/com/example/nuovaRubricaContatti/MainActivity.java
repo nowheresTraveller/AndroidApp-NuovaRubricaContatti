@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.example.nuovaRubricaContatti.Fragment.ContactFragment;
 import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int ADD_MODE = 3;
     public static final int RESULT_OK = 10;
     public static final int RESULT_DENIED = 0;
-    private SearchView mySearchView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
+        //creazione FragmentList
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.lista, new ContactFragment());
@@ -49,6 +52,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //evento su lookButton (bottone del FragmentList)
+        /*
+        View lookButton = findViewById(R.id.lookButton);
+        lookButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),LookContactActivity.class);
+                startActivity(i);
+            }
+        });
+        */
+
+
         //evento su editButton
         /*
         View editContactButton = findViewById(R.id.editButton);
@@ -61,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         });
         */
 
+        //funzionamento searchView
         SearchView searchView = findViewById(R.id.mySearchView);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
