@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.example.nuovaRubricaContatti.Fragment.ContactFragment;
 import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent;
@@ -51,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i, ADD_MODE);
             }
         });
+
+
+
+
 
         //evento su lookButton (bottone del FragmentList)
         /*

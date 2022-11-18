@@ -73,14 +73,12 @@ public class ContactFragment extends Fragment {
 
             View secondView = inflater.inflate(R.layout.fragment_item, container, false);
             TextView firstText= secondView.findViewById(R.id.firstText);
-            TextView secondText= secondView.findViewById(R.id.secondText);
-
 
             itemArrayList= new ArrayList<>();
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("0","mattino", (String)secondText.getText(),"clicca","clicca","clicca"));
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("1","ciao", (String)secondText.getText(),"clicca","clicca","clicca"));
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("2","mondo", (String)secondText.getText(),"clicca","clicca","clicca"));
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("3","sera", (String)secondText.getText(),"clicca","clicca","clicca"));
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("0","mattino","clicca","clicca","clicca"));
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("1","ciao","clicca","clicca","clicca"));
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("2","mondo","clicca","clicca","clicca"));
+            itemArrayList.add (new PlaceholderContent.PlaceholderItem("3","sera","clicca","clicca","clicca"));
             myRecyclerView =new MyContactRecyclerViewAdapter(itemArrayList);
             recyclerView.setAdapter(myRecyclerView);
             }

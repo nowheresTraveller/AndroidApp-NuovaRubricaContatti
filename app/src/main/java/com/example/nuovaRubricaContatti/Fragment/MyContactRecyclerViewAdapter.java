@@ -42,7 +42,7 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mFirstContentView.setText(mValues.get(position).firstContent);
-        holder.mSecondContentView.setText(mValues.get(position).secondContent);
+
         Log.d("onBindViewHolder","sono qui");
 
     }
@@ -54,7 +54,7 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mFirstContentView;
-        public final TextView mSecondContentView;
+
         public final Button lookButton;
         public final Button editButton;
         public final Button cancelButton;
@@ -63,7 +63,7 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
             mFirstContentView = binding.firstText;
-            mSecondContentView = binding.secondText;
+
             lookButton = binding.lookButton;
             editButton = binding.secondEditButton;
             cancelButton = binding.cancelButton;
@@ -71,7 +71,7 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mFirstContentView.getText() + " " + mFirstContentView.getText()  + "'";
+            return super.toString() + " '" + mFirstContentView.getText() + "'";
         }
     }
 }

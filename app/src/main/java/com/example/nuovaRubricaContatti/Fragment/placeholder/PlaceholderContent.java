@@ -38,7 +38,7 @@ public class PlaceholderContent {
     }
 
     private static PlaceholderItem createPlaceholderItem(int position) {
-        return new PlaceholderItem(String.valueOf(position), "Item " + position, "Item " + position, "clicca","clicca","clicca");
+        return new PlaceholderItem(String.valueOf(position), "Item " + position, "Item " + position, "clicca","clicca");
     }
 
     private static String makeDetails(int position) {
@@ -56,16 +56,14 @@ public class PlaceholderContent {
     public static class PlaceholderItem {
         public final String id;
         public final String firstContent;
-        public final String secondContent;
         public final String lookButton;
         public final String editButton;
         public final String cancelButton;
 
 
-        public PlaceholderItem(String id, String firstContent, String secondContent, String lookButton, String editButton, String cancelButton) {
+        public PlaceholderItem(String id, String firstContent,  String lookButton, String editButton, String cancelButton) {
             this.id = id;
             this.firstContent = firstContent;
-            this.secondContent= secondContent;
             this.lookButton=lookButton;
             this.editButton=editButton;
             this.cancelButton=cancelButton;
@@ -78,7 +76,7 @@ public class PlaceholderContent {
 
         @Override
         public String toString() {
-            return firstContent+" "+secondContent;
+            return firstContent;
         }
     }
 }
