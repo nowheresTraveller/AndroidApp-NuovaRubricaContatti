@@ -50,7 +50,7 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mFirstContentView.setText(mValues.get(position).firstContent);
+        holder.contentText.setText(mValues.get(position).firstContent);
         holder.bind(holder.mItem, listener);
         Log.d("onBindViewHolder", "sono qui");
     }
@@ -61,22 +61,24 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView mFirstContentView;
+        public final TextView contentText;
         public final Button lookButton;
         public final Button editButton;
         public final Button cancelButton;
         public PlaceholderItem mItem;
 
+
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
 
-            mFirstContentView = binding.firstText;
+            contentText = binding.firstText;
             lookButton = binding.lookButton;
             editButton = binding.editButton;
             cancelButton = binding.cancelButton;
         }
 
 
+        //Mio Metodo per gestire l'evento sul singolo "ViewHolder" della RecyclerView
         public void bind(final PlaceholderItem item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,12 +86,27 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
                     listener.onItemClick(item);
                 }
             });
+
+            editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("editButton: ","ok");
+                    Log.d("testo: ",""+contentText.getText());
+                }
+            });
         }
 
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mFirstContentView.getText() + "'";
+            return super.toString() + " '" + contentText.getText() + "'";
         }
     }
+
+
+    public static class SecondaClasseInnestata{
+        public SecondaClasseInnestata(){}
+    }
+
+
 }

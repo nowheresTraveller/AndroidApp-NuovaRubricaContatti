@@ -1,5 +1,6 @@
 package com.example.nuovaRubricaContatti.Fragment;
 
+import com.example.nuovaRubricaContatti.Fragment.MyContactRecyclerViewAdapter.SecondaClasseInnestata;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -94,6 +95,9 @@ public class ContactFragment extends Fragment {
             });
             recyclerView.setAdapter(myRecyclerView);
         }
+
+        SecondaClasseInnestata s= new SecondaClasseInnestata();
+
         return view;
     }
 
