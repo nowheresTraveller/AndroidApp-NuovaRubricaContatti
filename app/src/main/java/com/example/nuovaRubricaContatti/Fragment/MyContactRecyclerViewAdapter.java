@@ -14,37 +14,45 @@ import com.example.nuovaRubricaContatti.databinding.*;
 import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent.PlaceholderItem;
 
 
-
 import java.util.List;
 
 
 public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContactRecyclerViewAdapter.ViewHolder> {
 
-    private  List<PlaceholderItem> mValues;
-
-    public MyContactRecyclerViewAdapter(List<PlaceholderItem> items) {
-        mValues = items;
+    public interface OnItemClickListener {
+        void onItemClick(PlaceholderItem item);
     }
 
-    public void setFilteredList(List <PlaceholderContent.PlaceholderItem> list){
-        this.mValues=list;
+
+    private List<PlaceholderItem> mValues;
+    private OnItemClickListener listener;
+
+
+    public MyContactRecyclerViewAdapter(List<PlaceholderItem> items, OnItemClickListener listener) {
+        mValues = items;
+        this.listener = listener;
+
+    }
+
+
+    public void setFilteredList(List<PlaceholderContent.PlaceholderItem> list) {
+        this.mValues = list;
         notifyDataSetChanged();
+
+
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         return new ViewHolder(FragmentItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
-
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mFirstContentView.setText(mValues.get(position).firstContent);
-
-        Log.d("onBindViewHolder","sono qui");
-
+        holder.bind(holder.mItem, listener);
+        Log.d("onBindViewHolder", "sono qui");
     }
 
     @Override
@@ -54,7 +62,6 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mFirstContentView;
-
         public final Button lookButton;
         public final Button editButton;
         public final Button cancelButton;
@@ -62,12 +69,23 @@ public class MyContactRecyclerViewAdapter extends RecyclerView.Adapter<MyContact
 
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
-            mFirstContentView = binding.firstText;
 
+            mFirstContentView = binding.firstText;
             lookButton = binding.lookButton;
-            editButton = binding.secondEditButton;
+            editButton = binding.editButton;
             cancelButton = binding.cancelButton;
         }
+
+
+        public void bind(final PlaceholderItem item, final OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+        }
+
 
         @Override
         public String toString() {

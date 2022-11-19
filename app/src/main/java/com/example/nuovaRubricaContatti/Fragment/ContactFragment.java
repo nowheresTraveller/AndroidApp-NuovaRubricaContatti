@@ -1,6 +1,7 @@
 package com.example.nuovaRubricaContatti.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,12 +9,21 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.nuovaRubricaContatti.AddContactActivity;
+import com.example.nuovaRubricaContatti.EditContactActivity;
+import com.example.nuovaRubricaContatti.MainActivity;
 import com.example.nuovaRubricaContatti.R;
 import com.example.nuovaRubricaContatti.Fragment.placeholder.PlaceholderContent;
+
 import java.util.ArrayList;
 
 
@@ -27,8 +37,6 @@ public class ContactFragment extends Fragment {
     private int mColumnCount = 1;
     public static ArrayList<PlaceholderContent.PlaceholderItem> itemArrayList;
     public static MyContactRecyclerViewAdapter myRecyclerView;
-
-    public static MyContactRecyclerViewAdapter myContactRecyclerViewAdapter;
 
 
     public ContactFragment() {
@@ -53,6 +61,7 @@ public class ContactFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,20 +78,24 @@ public class ContactFragment extends Fragment {
             }
 
 
-
-
             View secondView = inflater.inflate(R.layout.fragment_item, container, false);
-            TextView firstText= secondView.findViewById(R.id.firstText);
+            TextView firstText = secondView.findViewById(R.id.firstText);
 
-            itemArrayList= new ArrayList<>();
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("0","mattino","clicca","clicca","clicca"));
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("1","ciao","clicca","clicca","clicca"));
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("2","mondo","clicca","clicca","clicca"));
-            itemArrayList.add (new PlaceholderContent.PlaceholderItem("3","sera","clicca","clicca","clicca"));
-            myRecyclerView =new MyContactRecyclerViewAdapter(itemArrayList);
+            itemArrayList = new ArrayList<>();
+            itemArrayList.add(new PlaceholderContent.PlaceholderItem("0", "mattino", "clicca", "clicca", "clicca"));
+            itemArrayList.add(new PlaceholderContent.PlaceholderItem("1", "ciao", "clicca", "clicca", "clicca"));
+            itemArrayList.add(new PlaceholderContent.PlaceholderItem("2", "mondo", "clicca", "clicca", "clicca"));
+            itemArrayList.add(new PlaceholderContent.PlaceholderItem("3", "sera", "clicca", "clicca", "clicca"));
+            myRecyclerView = new MyContactRecyclerViewAdapter(itemArrayList, new MyContactRecyclerViewAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(PlaceholderContent.PlaceholderItem item) {
+                    Log.d("contatto cliccato: ", "" + item.firstContent);
+                }
+            });
             recyclerView.setAdapter(myRecyclerView);
-            }
+        }
         return view;
     }
+
 
 }

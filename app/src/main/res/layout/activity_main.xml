@@ -28,13 +28,16 @@
     </androidx.appcompat.widget.SearchView>
 
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/lista"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:name="com.example.nuovaRubricaContatti.Fragment.ContactFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_item_list"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mySearchView">
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/mySearchView"/>
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addContact"

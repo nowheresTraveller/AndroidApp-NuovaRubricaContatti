@@ -27,7 +27,7 @@
         android:textSize="8dp" />
 
     <Button
-        android:id="@+id/secondEditButton"
+        android:id="@+id/editButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
