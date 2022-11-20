@@ -34,6 +34,7 @@
             android:padding="5dp">
 
             <ImageView
+                android:id="@+id/contactImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"

@@ -1,4 +1,4 @@
-package com.example.nuovaRubricaContatti.Fragment;
+package com.example.nuovaRubricaContatti.fragment;
 
 import android.os.Bundle;
 
@@ -10,12 +10,8 @@ import android.view.ViewGroup;
 
 import com.example.nuovaRubricaContatti.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link addEditFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class addEditFragment extends Fragment {
+
+public class AddEditFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +22,7 @@ public class addEditFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public addEditFragment() {
+    public AddEditFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +35,8 @@ public class addEditFragment extends Fragment {
      * @return A new instance of fragment addEditFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static addEditFragment newInstance(String param1, String param2) {
-        addEditFragment fragment = new addEditFragment();
+    public static AddEditFragment newInstance(String param1, String param2) {
+        AddEditFragment fragment = new AddEditFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
