@@ -6,13 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.example.nuovaRubricaContatti.R;
+import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<ContactOnListView> {
 
-    public CustomAdapter(Context context, int textViewResourceId, ContactOnListView [] objects) {
+    public List <ContactOnListView> contacts;
+
+    public CustomAdapter(Context context, int textViewResourceId, List <ContactOnListView> objects) {
         super(context, textViewResourceId, objects);
+        contacts= objects;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -23,5 +26,16 @@ public class CustomAdapter extends ArrayAdapter<ContactOnListView> {
         nomeContatto.setText(c.getNome());
         return convertView;
     }
+
+    public List<ContactOnListView> getContacts() {
+        return contacts;
+    }
+
+    public void setFilteredList(List <ContactOnListView> list) {
+        super.clear();
+        super.addAll(list);
+        notifyDataSetChanged();
+    }
+
 
 }

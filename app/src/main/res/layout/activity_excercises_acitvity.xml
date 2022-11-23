@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".ExcercisesAcitvity">
+
+
+    <Button
+        android:id="@+id/callButton"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="call num."
+        android:textSize="8dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/dirCallButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="8dp"
+        android:text="dir call num."
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/sendSmsButton"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:textSize="8dp"
+        android:text="send sms"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"/>
+
+
+    <Button
+        android:id="@+id/setAlarmButton"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:text="set alarm"
+        android:textSize="8dp"/>
+
+</LinearLayout>
