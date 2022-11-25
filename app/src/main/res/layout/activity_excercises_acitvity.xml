@@ -7,41 +7,108 @@
     tools:context=".ExcercisesAcitvity">
 
 
-    <Button
-        android:id="@+id/callButton"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:text="call num."
-        android:textSize="8dp"
-        android:layout_marginLeft="5dp"
-        android:layout_weight="1"/>
 
-    <Button
-        android:id="@+id/dirCallButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textSize="8dp"
-        android:text="dir call num."
-        android:layout_marginLeft="5dp"
-        android:layout_weight="1"/>
-    <Button
-        android:id="@+id/sendSmsButton"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:textSize="8dp"
-        android:text="send sms"
-        android:layout_marginLeft="5dp"
-        android:layout_weight="1"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/callButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="call num."
+                android:textSize="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/dirCallButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="8dp"
+                android:text="dir call num."
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/sendSmsButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:textSize="8dp"
+                android:text="send sms"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"/>
 
 
-    <Button
-        android:id="@+id/setAlarmButton"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_weight="1"
-        android:text="set alarm"
-        android:textSize="8dp"/>
+            <Button
+                android:id="@+id/setAlarmButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="set alarm"
+                android:textSize="8dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/addEventInCalendButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="add event in cal."
+                android:textSize="8dp"/>
+
+            <Button
+                android:id="@+id/createAnEmailButton"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="create email"
+                android:textSize="8dp"/>
+
+            <Button
+                android:id="@+id/locationInMapButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="location in map"
+                android:textSize="8dp"/>
+
+            <Button
+                android:id="@+id/goToBrowserButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="go to browser"
+                android:textSize="8dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/chooseContactButton"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="choose contact"
+                android:textSize="8dp"/>
+
+
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>
+
+

@@ -19,7 +19,7 @@
     </androidx.appcompat.widget.SearchView>
 
     <ListView
-        android:id="@+id/miaListView"
+        android:id="@+id/myListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/mySearchView"
@@ -27,7 +27,7 @@
         android:layout_marginTop="48dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addContact"
+        android:id="@+id/addContactButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"

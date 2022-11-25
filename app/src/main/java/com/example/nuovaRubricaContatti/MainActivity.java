@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -45,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Richiesta di permesso all'utente per leggere il filesystem di android
+        if (!(ContextCompat.checkSelfPermission(getApplicationContext(),permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED))
+            requestPermissions(new String[]{permission.READ_EXTERNAL_STORAGE}, 1);
+
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_DENIED)
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1);
+
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED)
+            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 1);
+
     }
 
     @Override
@@ -52,34 +63,70 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Metodo per lavora sulla directory "data" dell'applicazione
-        /*
-        MainActivity.workOnDataDirectoryOfApplication(getApplicationContext());
-        */
-
-        //Richiesta di permesso all'utente per leggere il filesystem di android
-        if (!(ContextCompat.checkSelfPermission(getApplicationContext(),permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
-            requestPermissions(new String[]{permission.READ_EXTERNAL_STORAGE}, 1);
-        }
-
+        // MainActivity.workOnDataDirectoryOfApplication(getApplicationContext());
 
         //Mio Metodo per esplorare il FileSystem di Android
         //PS:per esplorare delle directory di android c'è bisogno del permesso di root
-        //MainActivity.exploreAndroidFileSystem(getApplicationContext());
-
-
+        // MainActivity.exploreAndroidFileSystem(getApplicationContext());
 
 
         //Implementazione listView "miaListView"
-        ListView miaListView = (ListView) findViewById(R.id.miaListView);
+        ListView myListView = (ListView) findViewById(R.id.myListView);
         List contatti = new ArrayList();
         contatti.add(new ContactOnListView("Giovanni"));
         contatti.add(new ContactOnListView("Paolo"));
         customAdapter = new CustomAdapter(getApplicationContext(), R.layout.row_of_listview, contatti);
-        miaListView.setAdapter(customAdapter);
+        myListView.setAdapter(customAdapter);
 
 
-        //Implementazione listener su "miaListView"
-        miaListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //funzionamento searchView
+        SearchView searchView = findViewById(R.id.mySearchView);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
+
+        setMyListView(myListView);
+        setExcercisesActivityButton();
+        setAddContactButton();
+
+        super.onResume();
+    }
+
+
+    public void setAddContactButton(){
+        View addContactButton = findViewById(R.id.addContactButton);
+        addContactButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), AddContactActivity.class);
+                startActivityForResult(i, ADD_MODE);
+            }
+        });
+    }
+
+    public void setExcercisesActivityButton (){
+        Button excercisesActivityButton = findViewById(R.id.excercisesActivityButton);
+        excercisesActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(getApplicationContext(), ExcercisesAcitvity.class );
+                startActivity(i);            }
+        });
+    }
+
+
+    public void setMyListView(ListView myListView){
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("listView", "cliccato");
@@ -101,47 +148,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
-
-        setExcercisesActivityButton();
-
-        //gestione evento sulla view "addContact"
-        View addContactButton = findViewById(R.id.addContact);
-        addContactButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddContactActivity.class);
-                startActivityForResult(i, ADD_MODE);
-            }
-        });
-
-        //funzionamento searchView
-        SearchView searchView = findViewById(R.id.mySearchView);
-        searchView.clearFocus();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filterList(newText);
-                return true;
-            }
-        });
-
-        super.onResume();
-    }
-
-
-    public void setExcercisesActivityButton (){
-        Button excercisesActivityButton = findViewById(R.id.excercisesActivityButton);
-        excercisesActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(), ExcercisesAcitvity.class );
-                startActivity(i);            }
         });
     }
 
