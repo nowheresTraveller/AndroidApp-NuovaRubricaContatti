@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import com.example.nuovaRubricaContatti.R;
 import java.util.List;
@@ -25,6 +26,12 @@ public class CustomAdapter extends ArrayAdapter<ContactOnListView> {
         ContactOnListView c = getItem(position);
         nomeContatto.setText(c.getNome());
         return convertView;
+    }
+
+    public Button getLookButton (){
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.row_of_listview, null);
+        return (Button)view.findViewById(R.id.lookButton);
     }
 
     public List<ContactOnListView> getContacts() {

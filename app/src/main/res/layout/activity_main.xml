@@ -14,9 +14,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:queryHint="cerca contatto"
-        app:iconifiedByDefault="false">
-
-    </androidx.appcompat.widget.SearchView>
+        app:iconifiedByDefault="false"
+        android:focusable="false"/>
 
     <ListView
         android:id="@+id/myListView"

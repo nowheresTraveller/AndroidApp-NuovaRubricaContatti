@@ -1,113 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".ExcercisesAcitvity">
 
 
-
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
-        <TableRow
-            android:layout_marginBottom="10dp">
+        <Button
+            android:id="@+id/callButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="call num."
+            android:textSize="8dp" />
 
-            <Button
-                android:id="@+id/callButton"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="call num."
-                android:textSize="8dp"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"/>
+        <Button
+            android:id="@+id/dirCallButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="dir call num."
+            android:textSize="8dp" />
 
-            <Button
-                android:id="@+id/dirCallButton"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:textSize="8dp"
-                android:text="dir call num."
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"/>
-            <Button
-                android:id="@+id/sendSmsButton"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:textSize="8dp"
-                android:text="send sms"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"/>
-
-
-            <Button
-                android:id="@+id/setAlarmButton"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="set alarm"
-                android:textSize="8dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_marginBottom="10dp">
-
-            <Button
-                android:id="@+id/addEventInCalendButton"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="add event in cal."
-                android:textSize="8dp"/>
-
-            <Button
-                android:id="@+id/createAnEmailButton"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="create email"
-                android:textSize="8dp"/>
-
-            <Button
-                android:id="@+id/locationInMapButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="location in map"
-                android:textSize="8dp"/>
-
-            <Button
-                android:id="@+id/goToBrowserButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="go to browser"
-                android:textSize="8dp"/>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_marginTop="10dp">
-            <Button
-                android:id="@+id/chooseContactButton"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="choose contact"
-                android:textSize="8dp"/>
+        <Button
+            android:id="@+id/sendSmsButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="send sms"
+            android:textSize="8dp" />
 
 
-        </TableRow>
+        <Button
+            android:id="@+id/setAlarmButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="set alarm"
+            android:textSize="8dp" />
 
-    </TableLayout>
+
+        <Button
+            android:id="@+id/createAnEmailButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="create email"
+            android:textSize="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <Button
+            android:id="@+id/addEventInCalendButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="add app in cal."
+            android:textSize="8dp" />
+
+
+        <Button
+            android:id="@+id/locationInMapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="location in map"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/goToBrowserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="go to browser"
+            android:textSize="8dp" />
+
+
+        <Button
+            android:id="@+id/chooseContactButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="choose contact"
+            android:textSize="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <Button
+            android:id="@+id/startAnimationFirstButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="anim on firstText"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/startAnimationSecondButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="anim on secondText"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/startAnimationThirdButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="anim on thirdText"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/startAnimationFourthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="anim on fourthText"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/startAnimationFifthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="anim on fifthText"
+            android:textSize="8dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/excercisesFirstText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello_world" />
+
+        <TextView
+            android:id="@+id/excercisesSecondText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="pippo_pluto" />
+
+        <TextView
+            android:id="@+id/excercisesThirdText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="Lorep_ipsum" />
+
+        <TextView
+            android:id="@+id/excercisesFourthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="good_night" />
+
+        <TextView
+            android:id="@+id/excercisesFifthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="hey_people" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <ImageView
+            android:id="@+id/firstImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/my_first_frame_animation"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
 

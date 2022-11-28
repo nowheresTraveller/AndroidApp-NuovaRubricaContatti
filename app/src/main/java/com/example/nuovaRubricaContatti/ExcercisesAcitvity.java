@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.AlarmClock;
@@ -15,7 +16,11 @@ import android.provider.CalendarContract;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Date;
 
@@ -43,6 +48,12 @@ public class ExcercisesAcitvity extends AppCompatActivity {
         setLocationInMapButton();
         setGoToBrowserButton();
         setChooseContactInRubric();
+
+        //creazioni tweener_animation
+        animOnTexts();
+        //creazione frame_animation
+        setMyFirstFrameAnimation();
+
         super.onResume();
 
     }
@@ -50,24 +61,24 @@ public class ExcercisesAcitvity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == READ_CONTACT && resultCode== RESULT_OK){
-            Uri contactUri= data.getData();
-            Log.d("---ContactURI ",contactUri.toString());
+        if (requestCode == READ_CONTACT && resultCode == RESULT_OK) {
+            Uri contactUri = data.getData();
+            Log.d("---ContactURI ", contactUri.toString());
 
-            Cursor cursor= getContentResolver().query(contactUri,new String []{
+            Cursor cursor = getContentResolver().query(contactUri, new String[]{
                     ContactsContract.CommonDataKinds.Phone.NUMBER,
                     ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
-            },null,null);
+            }, null, null);
 
-        if (cursor!=null && cursor.moveToFirst()){
-            int colonnaNumero=cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-            int colonnaNomeContatto=cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
-            String numero = cursor.getString(colonnaNumero);
-            String nome = cursor.getString(colonnaNomeContatto);
+            if (cursor != null && cursor.moveToFirst()) {
+                int colonnaNumero = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                int colonnaNomeContatto = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                String numero = cursor.getString(colonnaNumero);
+                String nome = cursor.getString(colonnaNomeContatto);
 
-            Log.d("---nome contatto ",nome);
-            Log.d("---numero contatto ",numero);
-        }
+                Log.d("---nome contatto ", nome);
+                Log.d("---numero contatto ", numero);
+            }
 
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -222,7 +233,7 @@ public class ExcercisesAcitvity extends AppCompatActivity {
                 i.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
                 if (i.resolveActivity(getPackageManager()) != null) {
                     if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-                        startActivityForResult(i,READ_CONTACT);
+                        startActivityForResult(i, READ_CONTACT);
                     } else {
                         requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 1);
                     }
@@ -231,5 +242,72 @@ public class ExcercisesAcitvity extends AppCompatActivity {
         });
     }
 
+
+    public void animOnTexts() {
+        //firstAnimation
+        Button startAnimationButton = findViewById(R.id.startAnimationFirstButton);
+        startAnimationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+                TextView animText = findViewById(R.id.excercisesFirstText);
+                animText.startAnimation(anim);
+            }
+        });
+
+        //secondAnimation
+        Button startAnimationSecondButton = findViewById(R.id.startAnimationSecondButton);
+        startAnimationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+                TextView animText = findViewById(R.id.excercisesSecondText);
+                animText.startAnimation(anim);
+            }
+        });
+
+        //thirdAnimation
+        Button startAnimationThirdButton = findViewById(R.id.startAnimationThirdButton);
+        startAnimationThirdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotation);
+                TextView animText = findViewById(R.id.excercisesThirdText);
+                animText.startAnimation(anim);
+            }
+        });
+
+        //fourthAnimation
+        Button startAnimationFourthButton = findViewById(R.id.startAnimationFourthButton);
+        startAnimationFourthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);
+                TextView animText = findViewById(R.id.excercisesFourthText);
+                animText.startAnimation(anim);
+            }
+        });
+
+        //fifthAnimation
+        Button startAnimationFifthButton = findViewById(R.id.startAnimationFifthButton);
+        startAnimationFifthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.mixed);
+                TextView animText = findViewById(R.id.excercisesFifthText);
+                animText.startAnimation(anim);
+            }
+        });
+
+    }
+
+
+    public void setMyFirstFrameAnimation (){
+
+        //TODO cercare png di piccole dimensione (50dp*50dp)
+        ImageView img = (ImageView) findViewById(R.id.firstImg);
+        AnimationDrawable carsAnimation = (AnimationDrawable) img.getBackground();
+        carsAnimation.start();
+    }
 
 }

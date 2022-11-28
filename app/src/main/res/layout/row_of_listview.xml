@@ -17,7 +17,8 @@
         android:textAlignment="center"
         android:focusableInTouchMode="false"
         android:clickable="false"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:textColor="@color/textname_color_of_listview"/>
 
 
     <Button
@@ -30,7 +31,9 @@
         android:textSize="8dp"
         android:focusableInTouchMode="false"
         android:clickable="false"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:backgroundTint="@color/button_color_of_listview"
+        android:textColor="@color/textbutton_color_of_listview"/>
 
     <Button
         android:id="@+id/editButton"
@@ -42,7 +45,9 @@
         android:textSize="8dp"
         android:focusableInTouchMode="false"
         android:clickable="false"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:backgroundTint="@color/button_color_of_listview"
+        android:textColor="@color/textbutton_color_of_listview"/>
 
 
     <Button
@@ -55,6 +60,8 @@
         android:textSize="8dp"
         android:focusableInTouchMode="false"
         android:clickable="false"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:backgroundTint="@color/button_color_of_listview"
+        android:textColor="@color/textbutton_color_of_listview"/>
 
 </LinearLayout>

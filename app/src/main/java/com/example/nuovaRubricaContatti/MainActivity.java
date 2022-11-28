@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.Manifest.permission;
+import android.widget.TextView;
 
 import com.example.nuovaRubricaContatti.classes.ContactOnListView;
 import com.example.nuovaRubricaContatti.classes.CustomAdapter;
@@ -38,7 +39,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final int ADD_MODE = 3;
-    public static final int RESULT_DENIED = 0;
     public CustomAdapter customAdapter;
 
     @Override
@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         myListView.setAdapter(customAdapter);
 
 
+
+
         //funzionamento searchView
         SearchView searchView = findViewById(R.id.mySearchView);
         searchView.clearFocus();
@@ -95,11 +97,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        //aggiungo colore ad "addContactButton" via codice
+        addTextColorToLookButton();
+
         setMyListView(myListView);
         setExcercisesActivityButton();
         setAddContactButton();
 
         super.onResume();
+    }
+
+    public void  addTextColorToLookButton(){
+        //TODO setTextColor of lookButton's text
+        /*
+        Button lookButton = customAdapter.getLookButton();
+        lookButton.setTextColor(getResources().getColor(R.color.textname_color_of_listview,getTheme()));
+        */
     }
 
 
@@ -175,29 +190,21 @@ public class MainActivity extends AppCompatActivity {
     //Il parametro "requestCode" indica quale view ha scatenato l'evento
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent i) {
-        if (resultCode == RESULT_OK && requestCode == ADD_MODE)
-            Log.d("Aggiunzione contatto", "Il contatto è stato aggiunto con successo!\nIl nome inserito = " + i.getStringExtra("name"));
-        else if (resultCode == RESULT_DENIED && requestCode == ADD_MODE)
-            Log.d("Aggiunzione contatto", "Errore: il contatto non è stato aggiunto!");
-
         super.onActivityResult(requestCode, resultCode, i);
     }
 
 
     public static void exploreAndroidFileSystem (Context c){
-
         File file= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         Log.d("directory:", ""+file.isDirectory()+" and name is :"+file.getName());
         File [] listFiles = file.listFiles();
         for (File singleFile : listFiles){
             Log.d("name file",""+singleFile.getName());
         }
-
     }
 
 
     public static void workOnDataDirectoryOfApplication(Context c){
-
         //Scrittura nel file "terzo_testo_esempio.txt" nell'absolute path "/data/user/0/com.example.nuovaRubricaContatti/files"
         try {
             FileOutputStream outputStream = c.openFileOutput("terzo_testo_esempio.txt", Context.MODE_APPEND);
@@ -207,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("errore:", "file non creato");
         }
-
 
         //lettura nel file "terzo_testo_esempio.txt" nell'absolute path "/data/user/0/com.example.nuovaRubricaContatti/files"
         try {
@@ -238,8 +244,9 @@ public class MainActivity extends AppCompatActivity {
         for (File singoloFile : files) {
             Log.d("file", "" + singoloFile.getName());
         }
-
     }
+
+
 }
 
 
