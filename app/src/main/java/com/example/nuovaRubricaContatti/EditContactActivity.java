@@ -37,6 +37,16 @@ public class EditContactActivity extends AppCompatActivity {
         */
 
         //gestione evento su addImageButton
+        setListenerOnAddImageButton();
+
+        //Modifica TextView 'titleText'
+        TextView titleText = findViewById(R.id.titleText);
+        titleText.setText("Modifica contatto");
+
+        super.onResume();
+    }
+
+    public void setListenerOnAddImageButton(){
         View chooseImageButton = findViewById(R.id.addImageButton);
         chooseImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +57,8 @@ public class EditContactActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"),SELECT_IMAGE);
             }
         });
-
-        TextView titleText = findViewById(R.id.TitleText);
-        titleText.setText("Modifica contatto");
-
-        super.onResume();
     }
+
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent i) {
 

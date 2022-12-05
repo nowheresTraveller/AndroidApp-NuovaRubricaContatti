@@ -10,22 +10,33 @@ import android.widget.TextView;
 import com.example.nuovaRubricaContatti.R;
 import java.util.List;
 
-public class CustomAdapter extends ArrayAdapter<ContactOnListView> {
+public class CustomAdapter extends ArrayAdapter<Contact> {
 
-    public List <ContactOnListView> contacts;
+    public List <Contact> contacts;
 
-    public CustomAdapter(Context context, int textViewResourceId, List <ContactOnListView> objects) {
+    public CustomAdapter(Context context, int textViewResourceId, List <Contact> objects) {
         super(context, textViewResourceId, objects);
         contacts= objects;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.row_of_listview, null);
-        TextView nomeContatto = (TextView)convertView.findViewById(R.id.contactName);
-        ContactOnListView c = getItem(position);
-        nomeContatto.setText(c.getNome());
+        ViewHolder viewHolder = null;
+
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.row_of_listview, null);
+            viewHolder = new CustomAdapter.ViewHolder(
+                    convertView.findViewById(R.id.contactName)
+            );
+            convertView.setTag(viewHolder);
+        }else {
+            viewHolder=(ViewHolder) convertView.getTag();
+        }
+
+        Contact contact= getItem(position);
+        viewHolder.getContactName().setText(contact.getNome());
         return convertView;
+
     }
 
     public Button getLookButton (){
@@ -34,15 +45,27 @@ public class CustomAdapter extends ArrayAdapter<ContactOnListView> {
         return (Button)view.findViewById(R.id.lookButton);
     }
 
-    public List<ContactOnListView> getContacts() {
+    public List<Contact> getContacts() {
         return contacts;
     }
 
-    public void setFilteredList(List <ContactOnListView> list) {
+    public void setFilteredList(List <Contact> list) {
         super.clear();
         super.addAll(list);
         notifyDataSetChanged();
     }
 
+
+    public class ViewHolder{
+        private TextView contactName;
+
+        public ViewHolder(TextView contactName) {
+            this.contactName = contactName;
+        }
+
+        public TextView getContactName() {
+            return contactName;
+        }
+    }
 
 }

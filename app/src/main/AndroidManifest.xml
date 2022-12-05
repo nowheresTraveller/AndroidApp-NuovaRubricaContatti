@@ -37,13 +37,6 @@
         </receiver>
 
         <activity
-            android:name=".ExcercisesAcitvity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".LookContactActivity"
             android:exported="false">
             <meta-data

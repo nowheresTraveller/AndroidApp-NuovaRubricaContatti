@@ -10,7 +10,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.nuovaRubricaContatti.fragment.AddEditFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         tools:layout="@layout/fragment_add_edit" />

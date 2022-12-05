@@ -34,6 +34,16 @@ public class AddContactActivity extends AppCompatActivity {
         */
 
         //gestione evento su chooseImageButton
+        setListenerOnAddImageButton();
+
+
+        setListenerOnAcceptButton();
+        setListenerOnCancelButton();
+        super.onResume();
+    }
+
+
+    public void setListenerOnAddImageButton(){
         View chooseImageButton = findViewById(R.id.addImageButton);
         chooseImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,19 +54,26 @@ public class AddContactActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_IMAGE);
             }
         });
+    }
 
 
+
+    public void setListenerOnAcceptButton(){
         View acceptButton = findViewById(R.id.acceptButton);
         acceptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent();
-                EditText editText = (EditText) findViewById(R.id.textName);
+                EditText editText = (EditText) findViewById(R.id.nameText);
                 i.putExtra("name", editText.getText().toString());
                 setResult(MainActivity.RESULT_OK, i);
                 finish();
             }
         });
 
+    }
+
+
+    public void setListenerOnCancelButton (){
         View cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +81,6 @@ public class AddContactActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        super.onResume();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent i) {

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class LookContactActivity extends AppCompatActivity {
 
@@ -17,17 +18,26 @@ public class LookContactActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        setListenerOnEditButton2();
+        setListenerOnOkButton2();
 
-        Button editButton= findViewById(R.id.editButton2);
-        editButton.setOnClickListener(new View.OnClickListener() {
+        super.onResume();
+    }
+
+
+    public void  setListenerOnEditButton2(){
+        ImageButton imageEditButton = findViewById(R.id.imageEditButton);
+        imageEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),EditContactActivity.class);
                 startActivity(i);
             }
         });
-        super.onResume();
+    }
 
+
+    public void  setListenerOnOkButton2(){
         Button okButton= findViewById(R.id.okButton2);
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +45,5 @@ public class LookContactActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }

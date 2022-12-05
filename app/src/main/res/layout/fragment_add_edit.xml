@@ -1,181 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".fragment.AddEditFragment">
 
 
-    <TableLayout
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alike"
+        android:text="Aggiungi un Contatto"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/firstInnerLinearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
 
 
-        <TableRow
-            android:layout_marginBottom="30dp"
-            android:background="@color/white"
-            android:padding="5dp">
+        <ImageView
+            android:id="@+id/imageContact"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img_utente_default" />
 
-            <TextView
-                android:id="@+id/TitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/alike"
-                android:text="Aggiungi un Contatto"
-                android:textAlignment="center"
-                android:textSize="20sp" />
-        </TableRow>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addImageButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="80dp"
+            android:clickable="true"
+            android:minWidth="48dp"
+            android:src="@android:drawable/ic_menu_add" />
 
-        <!-- row insert photo-->
+    </LinearLayout>
 
-        <TableRow
-            android:layout_marginBottom="30dp"
-            android:paddingLeft="40dp"
-            android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/secondInnerLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageContact"
-                android:layout_width="10dp"
-                android:layout_height="60dp"
-                android:textAlignment="center"
-                android:scaleType="fitEnd"
-                android:src="@drawable/img_utente_default">
-            </ImageView>
+        <TableLayout
+            android:id="@+id/myTableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addImageButton"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_add" />
+            <TableRow>
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/labelNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Nome"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
 
-        <!-- row insert name-->
+                <EditText
+                    android:id="@+id/nameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:hint="nome e cognome"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
 
-        <TableRow
-            android:layout_margin="5sp"
-            android:background="@color/white"
-            android:padding="5dp">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/labelNameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nome"
-                android:textAlignment="center"
-                android:fontFamily="@font/lato_regular"/>
+            <TableRow>
 
-            <EditText
-                android:id="@+id/textName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/labelCellPhoneNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="numero cellulare"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
 
-        </TableRow>
+                <EditText
+                    android:id="@+id/textCellPhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:hint="numero"
+                    android:inputType="phone"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+            </TableRow>
 
-        <!-- row insert surname-->
-        <TableRow
-            android:layout_margin="5sp"
-            android:background="@color/white"
-            android:padding="5dp">
+            <TableRow>
 
-            <TextView
-                android:id="@+id/labelSurnameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="cognome"
-                android:textAlignment="center"
-                android:fontFamily="@font/lato_regular"/>
+                <TextView
+                    android:id="@+id/labelHomePhoneNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="numero di casa"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/textSurname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textAlignment="center" />
-        </TableRow>
+                <EditText
+                    android:id="@+id/textHomePhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:hint="numero di casa"
+                    android:inputType="phone"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/labelEmailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="e-mail"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/emailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:hint="e-mail"
+                    android:inputType="textEmailAddress"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
 
 
-        <!-- row row insert phone number-->
-        <TableRow
-            android:layout_margin="5sp"
-            android:background="@color/white"
-            android:padding="5dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/thirdInnerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        >
 
-            <TextView
-                android:id="@+id/labelPhoneNumberText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="numero"
-                android:textAlignment="center"
-                android:fontFamily="@font/lato_regular"/>
+        <Button
+            android:id="@+id/acceptButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="70dp"
+            android:text="ok" />
 
-            <EditText
-                android:id="@+id/textPhoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone"
-                android:textAlignment="center" />
-        </TableRow>
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="70dp"
+            android:text="cancel" />
 
-        <TableRow
-            android:layout_margin="5sp"
-            android:background="@color/white"
-            android:padding="5dp">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/labelEmailText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="e-mail"
-                android:textAlignment="center"
-                android:fontFamily="@font/lato_regular"/>
-
-            <EditText
-                android:id="@+id/emailText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:textAlignment="center" />
-        </TableRow>
-
-        <!-- row buttons-->
-
-        <TableRow
-            android:layout_marginTop="20sp"
-            android:background="@color/white"
-            android:padding="5dp">
-
-            <Button
-                android:id="@+id/acceptButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:layout_weight="1"
-                android:text="ok" />
-
-            <Button
-                android:id="@+id/cancelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:layout_weight="1"
-                android:text="cancel" />
-        </TableRow>
-
-    </TableLayout>
-
-</FrameLayout>
+</LinearLayout>

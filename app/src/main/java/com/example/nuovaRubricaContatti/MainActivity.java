@@ -9,7 +9,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -18,14 +17,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.Manifest.permission;
-import android.widget.TextView;
 
-import com.example.nuovaRubricaContatti.classes.ContactOnListView;
+import com.example.nuovaRubricaContatti.classes.Contact;
 import com.example.nuovaRubricaContatti.classes.CustomAdapter;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -73,11 +70,10 @@ public class MainActivity extends AppCompatActivity {
         //Implementazione listView "miaListView"
         ListView myListView = (ListView) findViewById(R.id.myListView);
         List contatti = new ArrayList();
-        contatti.add(new ContactOnListView("Giovanni"));
-        contatti.add(new ContactOnListView("Paolo"));
+        contatti.add(new Contact("Giovanni"));
+        contatti.add(new Contact("Paolo"));
         customAdapter = new CustomAdapter(getApplicationContext(), R.layout.row_of_listview, contatti);
         myListView.setAdapter(customAdapter);
-
 
 
 
@@ -103,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
         addTextColorToLookButton();
 
         setMyListView(myListView);
-        setExcercisesActivityButton();
         setAddContactButton();
 
         super.onResume();
@@ -129,15 +124,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setExcercisesActivityButton (){
-        Button excercisesActivityButton = findViewById(R.id.excercisesActivityButton);
-        excercisesActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(), ExcercisesAcitvity.class );
-                startActivity(i);            }
-        });
-    }
+
 
 
     public void setMyListView(ListView myListView){
@@ -168,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void filterList(String text) {
-        List<ContactOnListView> contactList = customAdapter.getContacts();
-        List<ContactOnListView> filteredList = new ArrayList<>();
-        for (ContactOnListView contact : contactList) {
+        List<Contact> contactList = customAdapter.getContacts();
+        List<Contact> filteredList = new ArrayList<>();
+        for (Contact contact : contactList) {
             if (contact.getNome().toLowerCase().equals(text.toLowerCase())) {
                 filteredList.add(contact);
             }
