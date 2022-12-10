@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment.AddEditFragment">
 
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alike"
-        android:text="Aggiungi un Contatto"
+        android:text="@string/add_contact_title"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -64,23 +64,55 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="Nome"
+                    android:text="@string/name_text"
                     android:textAlignment="center"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/nameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:hint="nome e cognome"
+                    android:hint="@string/name_hint"
                     android:inputType="textPersonName"
                     android:textAlignment="center"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </TableRow>
 
             <TableRow>
+
+                <TextView
+                    android:id="@+id/labelSurnameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="@string/surname_text"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/surnameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/surname_hint"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </TableRow>
+
+            <TableRow android:layout_height="69dp">
 
                 <TextView
                     android:id="@+id/labelCellPhoneNumberText"
@@ -88,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="numero cellulare"
+                    android:text="@string/cellular_number_text"
                     android:textAlignment="center"
                     android:textSize="20dp" />
 
@@ -97,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:hint="numero"
+                    android:hint="@string/phone_number_hint"
                     android:inputType="phone"
                     android:textAlignment="center"
                     android:textSize="20dp" />
@@ -111,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="numero di casa"
+                    android:text="@string/home_number_text"
                     android:textAlignment="center"
                     android:textSize="20dp" />
 
@@ -120,7 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:hint="numero di casa"
+                    android:hint="@string/phone_number_hint"
                     android:inputType="phone"
                     android:textAlignment="center"
                     android:textSize="20dp" />
@@ -135,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="e-mail"
+                    android:text="@string/email_text"
                     android:textAlignment="center"
                     android:textSize="20dp" />
 
@@ -144,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:hint="e-mail"
+                    android:hint="@string/email_hint"
                     android:inputType="textEmailAddress"
                     android:textAlignment="center"
                     android:textSize="20dp" />
@@ -160,26 +192,25 @@
         android:id="@+id/thirdInnerLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        >
+        android:layout_marginTop="40dp">
 
         <Button
-            android:id="@+id/acceptButton"
+            android:id="@+id/okButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="70dp"
-            android:text="ok" />
+            android:text="@string/ok"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginRight="70dp"
-            android:text="cancel" />
+            android:text="@string/indietro"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

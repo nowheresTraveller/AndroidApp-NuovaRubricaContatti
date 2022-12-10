@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:queryHint="cerca contatto"
+        app:queryHint="@string/find_contact_hint"
         app:iconifiedByDefault="false"
         android:focusable="false"/>
 

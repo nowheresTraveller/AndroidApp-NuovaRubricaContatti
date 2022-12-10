@@ -1,25 +1,37 @@
 package com.example.nuovaRubricaContatti;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.Manifest.permission;
+import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.example.nuovaRubricaContatti.classes.Contact;
 import com.example.nuovaRubricaContatti.classes.CustomAdapter;
+import com.example.nuovaRubricaContatti.classes.DialogEliminaContatto;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -31,11 +43,14 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int ADD_MODE = 3;
+    private static final int EDIT_MODE = 4;
+
     public CustomAdapter customAdapter;
 
     @Override
@@ -43,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //Richiesta di permesso all'utente per leggere il filesystem di android
-        if (!(ContextCompat.checkSelfPermission(getApplicationContext(),permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED))
+        if (!(ContextCompat.checkSelfPermission(getApplicationContext(), permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED))
             requestPermissions(new String[]{permission.READ_EXTERNAL_STORAGE}, 1);
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_DENIED)
@@ -76,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         myListView.setAdapter(customAdapter);
 
 
-
         //funzionamento searchView
         SearchView searchView = findViewById(R.id.mySearchView);
         searchView.clearFocus();
@@ -94,17 +109,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         //aggiungo colore ad "addContactButton" via codice
         addTextColorToLookButton();
 
-        setMyListView(myListView);
+        setListenerOnMyListView(myListView);
         setAddContactButton();
 
         super.onResume();
     }
 
-    public void  addTextColorToLookButton(){
+    public void addTextColorToLookButton() {
         //TODO setTextColor of lookButton's text
         /*
         Button lookButton = customAdapter.getLookButton();
@@ -113,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void setAddContactButton(){
+    public void setAddContactButton() {
         View addContactButton = findViewById(R.id.addContactButton);
         addContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,9 +139,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-    public void setMyListView(ListView myListView){
+    //Gestisce gli eventi sugli Item della listView
+    public void setListenerOnMyListView(ListView myListView) {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -146,7 +159,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(getApplicationContext(), EditContactActivity.class);
-                        startActivity(i);
+                        startActivityForResult(i, EDIT_MODE);
+                    }
+                });
+
+                Button deleteButton = findViewById(R.id.deleteButton);
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogEliminaContatto d = new DialogEliminaContatto();
+                        d.show(getSupportFragmentManager(), "ViewHolder");
                     }
                 });
             }
@@ -154,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //permetto la funzione di filtro della searchView in rapporto alla ListView
     public void filterList(String text) {
         List<Contact> contactList = customAdapter.getContacts();
         List<Contact> filteredList = new ArrayList<>();
@@ -169,68 +192,71 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //implementa un "options menu" nell'activity
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options, menu);
+        return true;
+    }
 
-    //Alert
-    //Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show();
+
+    //metodo che gestisce gli eventi sugli item dell "options menu"
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.itaElement:
+                Log.d(" - lingua cliccata ", " italiano");
+                break;
+
+            case R.id.engElement:
+                Log.d(" - lingua cliccata ", " inglese");
+                break;
+
+            case R.id.creditsItem:
+                LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.popup_window_credits, null);
+                PopupWindow popupWindow = new PopupWindow(popupView, 800, 800, true);
+                popupWindow.showAtLocation(findViewById(R.id.myListView).getRootView(), Gravity.CENTER, 0, 0);
+
+                //crea effetto blur dietro il popup window
+                WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
+                layoutParams.dimAmount = 0.50f;
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                getWindow().setAttributes(layoutParams);
 
 
-    //Il parametro "requestCode" indica quale view ha scatenato l'evento
+                //gestione evento "tocco" sul popup window
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+
+                    // chiude il popup window quando è toccato
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+                break;
+        }
+        return true;
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent i) {
+
+        if (requestCode == ADD_MODE && resultCode == RESULT_OK) {
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.contact_added_with_success, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        if (requestCode == EDIT_MODE && resultCode == RESULT_OK) {
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.contact_modified_with_success, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
         super.onActivityResult(requestCode, resultCode, i);
-    }
-
-
-    public static void exploreAndroidFileSystem (Context c){
-        File file= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        Log.d("directory:", ""+file.isDirectory()+" and name is :"+file.getName());
-        File [] listFiles = file.listFiles();
-        for (File singleFile : listFiles){
-            Log.d("name file",""+singleFile.getName());
-        }
-    }
-
-
-    public static void workOnDataDirectoryOfApplication(Context c){
-        //Scrittura nel file "terzo_testo_esempio.txt" nell'absolute path "/data/user/0/com.example.nuovaRubricaContatti/files"
-        try {
-            FileOutputStream outputStream = c.openFileOutput("terzo_testo_esempio.txt", Context.MODE_APPEND);
-            DataOutputStream outStream = new DataOutputStream(new BufferedOutputStream(outputStream));
-            outStream.writeUTF("ciao mondo");
-            outStream.close();
-        } catch (Exception e) {
-            Log.d("errore:", "file non creato");
-        }
-
-        //lettura nel file "terzo_testo_esempio.txt" nell'absolute path "/data/user/0/com.example.nuovaRubricaContatti/files"
-        try {
-
-            String result= new String(),patternString;
-            FileInputStream fis = c.openFileInput("terzo_testo_esempio.txt");
-            BufferedReader d = new BufferedReader(new InputStreamReader(fis));
-            patternString = d.readLine();
-            while (patternString!=null){
-                result+=patternString+"\n";
-                patternString=d.readLine();
-            }
-            Log.d("contenuto file 'terzo_testo_esempio.txt",""+result);
-            d.close();
-
-        }catch (FileNotFoundException e){
-            Log.d("Errore","file per la lettura non trovato - "+e.getClass());
-        }catch (java.io.IOException e){
-            Log.d("Errore","Impossibile leggere file - "+e.getClass());
-        }
-
-
-        // get della directory
-        // con absolute path "/data/user/0/com.example.nuovaRubricaContatti/files"
-        //e listato dei file
-        File f = c.getFilesDir();
-        File[] files = f.listFiles();
-        for (File singoloFile : files) {
-            Log.d("file", "" + singoloFile.getName());
-        }
     }
 
 

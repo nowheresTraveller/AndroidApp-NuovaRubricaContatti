@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class AddContactActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class AddContactActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         imgContact = findViewById(R.id.imageContact);
+
         /*
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -37,7 +39,7 @@ public class AddContactActivity extends AppCompatActivity {
         setListenerOnAddImageButton();
 
 
-        setListenerOnAcceptButton();
+        setListenerOnOkButton();
         setListenerOnCancelButton();
         super.onResume();
     }
@@ -58,14 +60,12 @@ public class AddContactActivity extends AppCompatActivity {
 
 
 
-    public void setListenerOnAcceptButton(){
-        View acceptButton = findViewById(R.id.acceptButton);
-        acceptButton.setOnClickListener(new View.OnClickListener() {
+    public void setListenerOnOkButton(){
+        View okButton = findViewById(R.id.okButton);
+        okButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent();
-                EditText editText = (EditText) findViewById(R.id.nameText);
-                i.putExtra("name", editText.getText().toString());
-                setResult(MainActivity.RESULT_OK, i);
+                setResult(-1, i);
                 finish();
             }
         });

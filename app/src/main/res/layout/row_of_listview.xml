@@ -51,7 +51,7 @@
 
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/deleteButton"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"

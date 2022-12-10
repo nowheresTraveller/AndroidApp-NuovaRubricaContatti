@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.Locale;
 
 
 public class EditContactActivity extends AppCompatActivity {
@@ -29,21 +29,44 @@ public class EditContactActivity extends AppCompatActivity {
     protected void onResume() {
        imgContact=findViewById(R.id.imageContact);
 
-        /*
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragmentContainerView, new addEditFragment());
-        transaction.commit();
-        */
+        //Modifica TextView 'titleText'
+        TextView titleText = findViewById(R.id.titleText);
+        if (Locale.getDefault().getLanguage().equals("en")){
+            titleText.setText("Edit contact");
+        }else{
+            titleText.setText("Modifica contatto");
+        }
+
 
         //gestione evento su addImageButton
         setListenerOnAddImageButton();
+        setListenerOnOkButton();
+        setListenerOnCancelButton();
 
-        //Modifica TextView 'titleText'
-        TextView titleText = findViewById(R.id.titleText);
-        titleText.setText("Modifica contatto");
 
         super.onResume();
+    }
+
+
+    public void setListenerOnOkButton(){
+        View okButton = findViewById(R.id.okButton);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent();
+                setResult(-1, i);
+                finish();
+            }
+        });
+    }
+
+    public void setListenerOnCancelButton (){
+        View cancelButton = findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void setListenerOnAddImageButton(){

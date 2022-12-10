@@ -39,11 +39,6 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
 
     }
 
-    public Button getLookButton (){
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.row_of_listview, null);
-        return (Button)view.findViewById(R.id.lookButton);
-    }
 
     public List<Contact> getContacts() {
         return contacts;
@@ -57,6 +52,7 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
 
 
     public class ViewHolder{
+
         private TextView contactName;
 
         public ViewHolder(TextView contactName) {
