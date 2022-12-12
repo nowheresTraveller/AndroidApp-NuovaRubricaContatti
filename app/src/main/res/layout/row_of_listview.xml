@@ -3,16 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingLeft="25dp"
-    android:paddingRight="25dp">
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
 
     <TextView
         android:id="@+id/contactName"
-        android:layout_width="120dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginRight="8dp"
+        android:text="primoTesto"
+        android:textAlignment="center"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
+        android:textColor="@color/textname_color_of_listview"/>
+
+    <TextView
+        android:id="@+id/contactSurname"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="3dp"
         android:text="primoTesto"
         android:textAlignment="center"
         android:focusableInTouchMode="false"

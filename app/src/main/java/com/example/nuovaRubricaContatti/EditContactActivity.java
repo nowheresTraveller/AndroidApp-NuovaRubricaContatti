@@ -49,7 +49,7 @@ public class EditContactActivity extends AppCompatActivity {
 
 
     public void setListenerOnOkButton(){
-        View okButton = findViewById(R.id.okButton);
+        View okButton = findViewById(R.id.addButton);
         okButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent();

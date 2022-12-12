@@ -1,14 +1,15 @@
 package com.example.nuovaRubricaContatti.classes;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 import com.example.nuovaRubricaContatti.R;
 import java.util.List;
+import com.example.nuovaRubricaContatti.data.entity.Contact;
 
 public class CustomAdapter extends ArrayAdapter<Contact> {
 
@@ -26,7 +27,8 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.row_of_listview, null);
             viewHolder = new CustomAdapter.ViewHolder(
-                    convertView.findViewById(R.id.contactName)
+                    convertView.findViewById(R.id.contactName),
+                    convertView.findViewById(R.id.contactSurname)
             );
             convertView.setTag(viewHolder);
         }else {
@@ -34,7 +36,8 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
         }
 
         Contact contact= getItem(position);
-        viewHolder.getContactName().setText(contact.getNome());
+        viewHolder.getContactName().setText(contact.getName());
+        viewHolder.getContactSurname().setText(contact.getSurname());
         return convertView;
 
     }
@@ -54,14 +57,21 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
     public class ViewHolder{
 
         private TextView contactName;
+        private TextView contactSurname;
 
-        public ViewHolder(TextView contactName) {
+        public ViewHolder(TextView contactName, TextView contactSurname) {
             this.contactName = contactName;
+            this.contactSurname = contactSurname;
         }
 
         public TextView getContactName() {
             return contactName;
         }
+
+        public TextView getContactSurname() {
+            return contactSurname;
+        }
+
     }
 
 }

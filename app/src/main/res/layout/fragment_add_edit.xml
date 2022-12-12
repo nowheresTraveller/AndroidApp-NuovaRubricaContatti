@@ -115,7 +115,7 @@
             <TableRow android:layout_height="69dp">
 
                 <TextView
-                    android:id="@+id/labelCellPhoneNumberText"
+                    android:id="@+id/labelCellNumberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -125,7 +125,7 @@
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/textCellPhoneNumber"
+                    android:id="@+id/cellNumberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -138,7 +138,7 @@
             <TableRow>
 
                 <TextView
-                    android:id="@+id/labelHomePhoneNumberText"
+                    android:id="@+id/labelPhoneNumberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -148,7 +148,7 @@
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/textHomePhoneNumber"
+                    android:id="@+id/homeNumberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -195,11 +195,11 @@
         android:layout_marginTop="40dp">
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:text="@string/ok"
+            android:text="@string/add"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -23,6 +23,7 @@
     <string name="contact_added_with_success">contact added with success</string>
     <string name="contact_modified_with_success">contact modified with success</string>
     <string name="description_credits">New address book\nProduct by Granatello_soft_inc\n2022-2023</string>
+    <string name="add">add</string>
 
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>

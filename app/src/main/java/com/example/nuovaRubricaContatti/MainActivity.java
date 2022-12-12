@@ -5,14 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,19 +25,11 @@ import android.widget.ListView;
 import android.Manifest.permission;
 import android.widget.PopupWindow;
 import android.widget.Toast;
-
-import com.example.nuovaRubricaContatti.classes.Contact;
+import com.example.nuovaRubricaContatti.classes.ListContact;
 import com.example.nuovaRubricaContatti.classes.CustomAdapter;
 import com.example.nuovaRubricaContatti.classes.DialogEliminaContatto;
+import com.example.nuovaRubricaContatti.data.entity.Contact;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -55,9 +44,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        new AsyncTask <Void,Void,Void> (){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                customAdapter = new CustomAdapter(getApplicationContext(),
+                        R.layout.row_of_listview,
+                        new ListContact(getApplicationContext()).getListContact());
 
+                return null;
+            }
+        }.execute();
+
+        setContentView(R.layout.activity_main);
 
         //Richiesta di permesso all'utente per leggere il filesystem di android
         if (!(ContextCompat.checkSelfPermission(getApplicationContext(), permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED))
@@ -69,28 +67,14 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED)
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 1);
 
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     protected void onResume() {
-
-
-        //Metodo per lavora sulla directory "data" dell'applicazione
-        // MainActivity.workOnDataDirectoryOfApplication(getApplicationContext());
-
-        //Mio Metodo per esplorare il FileSystem di Android
-        //PS:per esplorare delle directory di android c'è bisogno del permesso di root
-        // MainActivity.exploreAndroidFileSystem(getApplicationContext());
-
-
         //Implementazione listView "miaListView"
         ListView myListView = (ListView) findViewById(R.id.myListView);
-        List contatti = new ArrayList();
-        contatti.add(new Contact("Giovanni"));
-        contatti.add(new Contact("Paolo"));
-        customAdapter = new CustomAdapter(getApplicationContext(), R.layout.row_of_listview, contatti);
         myListView.setAdapter(customAdapter);
-
 
         //funzionamento searchView
         SearchView searchView = findViewById(R.id.mySearchView);
@@ -108,10 +92,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         //aggiungo colore ad "addContactButton" via codice
         addTextColorToLookButton();
-
         setListenerOnMyListView(myListView);
         setAddContactButton();
 
@@ -175,13 +157,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+/*
     //permetto la funzione di filtro della searchView in rapporto alla ListView
+    public void filterList(String text) {
+        int textLengthMin1=text.length()-1;
+        text = text.toLowerCase();
+        List<Contact> contactList = customAdapter.getContacts();
+        List<Contact> filteredList = new ArrayList<>();
+
+        for (Contact contact : contactList) {
+            String cName = contact.getName();
+            String cSurname=contact.getSurname().toLowerCase();
+            if (text.equals(cName.substring(0,textLengthMin1)) || text.equals(cSurname.substring(0,textLengthMin1))){
+                filteredList.add(contact);
+            }
+        }
+        if (!filteredList.isEmpty())
+            customAdapter.setFilteredList(filteredList);
+     }
+*/
+
+
     public void filterList(String text) {
         List<Contact> contactList = customAdapter.getContacts();
         List<Contact> filteredList = new ArrayList<>();
         for (Contact contact : contactList) {
-            if (contact.getNome().toLowerCase().equals(text.toLowerCase())) {
+            if (contact.getName().toLowerCase().equals(text.toLowerCase())) {
                 filteredList.add(contact);
             }
         }
@@ -190,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
             customAdapter.setFilteredList(filteredList);
 
     }
-
 
     //implementa un "options menu" nell'activity
     @Override

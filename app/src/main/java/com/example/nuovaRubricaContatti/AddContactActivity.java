@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.nuovaRubricaContatti.data.dao.ContactDao;
+import com.example.nuovaRubricaContatti.data.database.MyAppDatabase;
+import com.example.nuovaRubricaContatti.data.entity.Contact;
 
 
 public class AddContactActivity extends AppCompatActivity {
@@ -39,7 +45,8 @@ public class AddContactActivity extends AppCompatActivity {
         setListenerOnAddImageButton();
 
 
-        setListenerOnOkButton();
+        setListenerOnAddButton();
+
         setListenerOnCancelButton();
         super.onResume();
     }
@@ -60,10 +67,33 @@ public class AddContactActivity extends AppCompatActivity {
 
 
 
-    public void setListenerOnOkButton(){
-        View okButton = findViewById(R.id.okButton);
+    public void setListenerOnAddButton(){
+        View okButton = findViewById(R.id.addButton);
         okButton.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
+
+                new AsyncTask<Void,Void, Void>(){
+                    @Override
+                    protected Void doInBackground(Void... voids) {
+
+                        Contact newContact = new Contact(
+                                ((EditText)findViewById(R.id.nameText)).getText().toString(),
+                                ((EditText)findViewById(R.id.surnameText)).getText().toString(),
+                                ((EditText)findViewById(R.id.homeNumberText)).getText().toString(),
+                                ((EditText)findViewById(R.id.cellNumberText)).getText().toString(),
+                                ((EditText)findViewById(R.id.emailText)).getText().toString()
+                        );
+
+                        ContactDao contactDao = MyAppDatabase.getInstance(getApplicationContext()).getContactDao();
+                        long id = contactDao.insertContact(newContact);
+                        Log.d("inserimento "," ok ");
+                        Log.d(" - nome e cognome prima riga tabella "," "+contactDao.selectById(id).getName()+" "+contactDao.selectById(id).getSurname());
+
+                        return null;
+                    }
+                }.execute();
+
                 Intent i = new Intent();
                 setResult(-1, i);
                 finish();
