@@ -92,8 +92,24 @@ public class Contact {
         return email;
     }
 
-    public String getCampoIgnorato() {
-        return campoIgnorato;
+    public boolean checkName(){
+        return (name!=null);
+    }
+
+    public boolean checkSurname(){
+        return (surname!=null);
+    }
+
+    public boolean checkCellNumber(){
+        return (cellNumber!=null);
+    }
+
+    public boolean checkHomeNumber(){
+        return (homeNumber!=null);
+    }
+
+    public boolean checkEmail(){
+        return (email!=null);
     }
 
     // quest'annotation permette ad un campo della classe

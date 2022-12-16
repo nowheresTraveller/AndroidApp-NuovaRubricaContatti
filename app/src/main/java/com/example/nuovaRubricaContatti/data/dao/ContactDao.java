@@ -23,6 +23,10 @@ public interface ContactDao {
     @Delete
     public void deleteContact(Contact contact);
 
+    //delete con condizione
+    @Query("delete from contact where id = :idContact")
+    public void deleteById(long idContact);
+
     //Select
     //l' "idContact" nella query è proprio il parametro passato al metodo astratto
     @Query("select * from contact where id = :idContact")

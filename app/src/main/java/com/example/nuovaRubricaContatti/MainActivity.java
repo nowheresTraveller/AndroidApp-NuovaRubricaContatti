@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(getApplicationContext(), LookContactActivity.class);
+                        i.putExtra("position",position+1);
                         startActivity(i);
                     }
                 });
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(getApplicationContext(), EditContactActivity.class);
+                        i.putExtra("position",position+1);
                         startActivityForResult(i, EDIT_MODE);
                     }
                 });

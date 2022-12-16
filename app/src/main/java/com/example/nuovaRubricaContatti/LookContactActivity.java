@@ -5,12 +5,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.nuovaRubricaContatti.data.database.MyAppDatabase;
+import com.example.nuovaRubricaContatti.data.entity.Contact;
 
 public class LookContactActivity extends AppCompatActivity {
 
@@ -23,9 +27,30 @@ public class LookContactActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        long id=getIntent().getIntExtra("position",0);
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Contact c= MyAppDatabase.getInstance(getApplicationContext()).getContactDao().selectById(id);
+                String nameAndSurname="";
+                if(c.checkName())
+                    nameAndSurname=c.getName();
+                if(c.checkSurname())
+                    nameAndSurname+=" "+c.getSurname();
+
+                ((TextView)findViewById(R.id.nameContact)).setText(nameAndSurname);
+                if(c.checkCellNumber())
+                    ((TextView)findViewById(R.id.cellNumberText2)).setText(c.getCellNumber());
+                if(c.checkHomeNumber())
+                    ((TextView)findViewById(R.id.homeNumberText2)).setText(c.getHomeNumber());
+                if(c.checkEmail())
+                    ((TextView)findViewById(R.id.emailText2)).setText(c.getEmail());
+                return null;
+            }
+        }.execute();
+
         setListenerOnEditButton2();
         setListenerOnOkButton2();
-        setListenerOnNewViewButton();
 
         super.onResume();
     }
@@ -54,32 +79,4 @@ public class LookContactActivity extends AppCompatActivity {
     }
 
 
-    public void setListenerOnNewViewButton() {
-        Button createNewButton = findViewById(R.id.newViewButton);
-        createNewButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                ConstraintLayout cLayout = (ConstraintLayout) findViewById(R.id.layout_prova);
-                ConstraintSet set = new ConstraintSet();
-                set.clone(cLayout);
-                TextView newText = new TextView(getApplicationContext());
-                newText.setId(View.generateViewId());
-                newText.setText("ciao_mondo");
-                cLayout.addView(newText);
-                set.connect(newText.getId(), ConstraintSet.TOP, createNewButton.getId(), ConstraintSet.BOTTOM, 0);
-                set.connect(newText.getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
-                set.constrainHeight(newText.getId(), 50);
-                set.applyTo(cLayout);
-            }
-        });
-
-        createNewButton.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                ((ViewGroup) createNewButton.getParent()).removeViewAt(1);
-                return false;
-            }
-        });
-    }
 }

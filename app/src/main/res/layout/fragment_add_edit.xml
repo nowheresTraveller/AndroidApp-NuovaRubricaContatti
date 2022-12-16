@@ -45,145 +45,137 @@
 
     <LinearLayout
         android:id="@+id/secondInnerLinearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TableLayout
-            android:id="@+id/myTableLayout"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <TableRow>
+            <TextView
+                android:id="@+id/labelNameText"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/name_text"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
 
-                <TextView
-                    android:id="@+id/labelNameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/lato_regular"
-                    android:text="@string/name_text"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/nameText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/name_hint"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
 
-                <EditText
-                    android:id="@+id/nameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:hint="@string/name_hint"
-                    android:inputType="textPersonName"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
-            </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow>
+            <TextView
+                android:id="@+id/labelSurnameText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/surname_text"
+                android:textAlignment="center"/>
 
-                <TextView
-                    android:id="@+id/labelSurnameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/lato_regular"
-                    android:text="@string/surname_text"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/surnameText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/surname_hint"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textSize="20dp"/>
 
-                <EditText
-                    android:id="@+id/surnameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:hint="@string/surname_hint"
-                    android:inputType="textPersonName"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
-            </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow android:layout_height="69dp">
 
-                <TextView
-                    android:id="@+id/labelCellNumberText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/lato_regular"
-                    android:text="@string/cellular_number_text"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+            <TextView
+                android:id="@+id/labelCellNumberText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/cellular_number_text"
+                android:textAlignment="center" />
 
-                <EditText
-                    android:id="@+id/cellNumberText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:hint="@string/phone_number_hint"
-                    android:inputType="phone"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
-            </TableRow>
+            <EditText
+                android:id="@+id/cellNumberText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/phone_number_hint"
+                android:inputType="phone"
+                android:textAlignment="center"/>
 
-            <TableRow>
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/labelPhoneNumberText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/lato_regular"
-                    android:text="@string/home_number_text"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/homeNumberText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:hint="@string/phone_number_hint"
-                    android:inputType="phone"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+            <TextView
+                android:id="@+id/labelPhoneNumberText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/home_number_text"
+                android:textAlignment="center"/>
 
-            </TableRow>
+            <EditText
+                android:id="@+id/homeNumberText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/phone_number_hint"
+                android:inputType="phone"
+                android:textAlignment="center"/>
 
-            <TableRow>
 
-                <TextView
-                    android:id="@+id/labelEmailText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/lato_regular"
-                    android:text="@string/email_text"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+        </LinearLayout>
 
-                <EditText
-                    android:id="@+id/emailText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:hint="@string/email_hint"
-                    android:inputType="textEmailAddress"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            </TableRow>
+            <TextView
+                android:id="@+id/labelEmailText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/email_text"
+                android:textAlignment="center"/>
 
-        </TableLayout>
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

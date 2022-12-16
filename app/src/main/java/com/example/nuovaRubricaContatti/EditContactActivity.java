@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.nuovaRubricaContatti.data.database.MyAppDatabase;
+import com.example.nuovaRubricaContatti.data.entity.Contact;
+
 import java.util.Locale;
 
 
@@ -28,6 +34,26 @@ public class EditContactActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
        imgContact=findViewById(R.id.imageContact);
+
+        long id=getIntent().getIntExtra("position",0);
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Contact c = MyAppDatabase.getInstance(getApplicationContext()).getContactDao().selectById(id);
+                if (c.checkName())
+                    ((EditText) findViewById(R.id.nameText)).setText(c.getName());
+                if(c.checkSurname())
+                    ((EditText) findViewById(R.id.surnameText)).setText(c.getSurname());
+                if(c.checkCellNumber())
+                    ((EditText) findViewById(R.id.cellNumberText)).setText(c.getCellNumber());
+                if(c.checkHomeNumber())
+                    ((EditText) findViewById(R.id.homeNumberText)).setText(c.getHomeNumber());
+                if(c.checkEmail())
+                    ((EditText) findViewById(R.id.emailText)).setText(c.getEmail());
+                return null;
+            }
+        }.execute();
 
         //Modifica TextView 'titleText'
         TextView titleText = findViewById(R.id.titleText);
