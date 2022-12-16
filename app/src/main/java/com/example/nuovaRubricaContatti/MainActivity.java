@@ -152,8 +152,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         DialogEliminaContatto d = new DialogEliminaContatto();
-                        d.show(getSupportFragmentManager(), "ViewHolder");
-                    }
+                        d.setIdContatto(position+1);
+                        d.show(getSupportFragmentManager(), "ViewHolder");}
                 });
             }
         });
