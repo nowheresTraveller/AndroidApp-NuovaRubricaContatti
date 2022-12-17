@@ -43,16 +43,22 @@ public class AddContactActivity extends AppCompatActivity {
 
         //gestione evento su chooseImageButton
         setListenerOnAddImageButton();
-
-
         setListenerOnAddButton();
-
         setListenerOnCancelButton();
         super.onResume();
     }
 
+    public boolean checkNameAndSurnameEditText() {
+        if (((EditText) findViewById(R.id.nameText)).getText().toString().equals("") || ((EditText) findViewById(R.id.surnameText)).getText().toString().equals("")) {
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.nametext_and_surnametext_empty, Toast.LENGTH_LONG);
+            toast.show();
+            return false;
+        }
+        return true;
+    }
 
-    public void setListenerOnAddImageButton(){
+
+    public void setListenerOnAddImageButton() {
         View chooseImageButton = findViewById(R.id.addImageButton);
         chooseImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,44 +72,45 @@ public class AddContactActivity extends AppCompatActivity {
     }
 
 
-
-    public void setListenerOnAddButton(){
+    public void setListenerOnAddButton() {
         View okButton = findViewById(R.id.addButton);
         okButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                new AsyncTask<Void,Void, Void>(){
-                    @Override
-                    protected Void doInBackground(Void... voids) {
+                if (checkNameAndSurnameEditText()) {
+                    new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected Void doInBackground(Void... voids) {
 
-                        Contact newContact = new Contact(
-                                ((EditText)findViewById(R.id.nameText)).getText().toString(),
-                                ((EditText)findViewById(R.id.surnameText)).getText().toString(),
-                                ((EditText)findViewById(R.id.homeNumberText)).getText().toString(),
-                                ((EditText)findViewById(R.id.cellNumberText)).getText().toString(),
-                                ((EditText)findViewById(R.id.emailText)).getText().toString()
-                        );
+                            Contact newContact = new Contact(
+                                    ((EditText) findViewById(R.id.nameText)).getText().toString(),
+                                    ((EditText) findViewById(R.id.surnameText)).getText().toString(),
+                                    ((EditText) findViewById(R.id.cellNumberText)).getText().toString(),
+                                    ((EditText) findViewById(R.id.homeNumberText)).getText().toString(),
+                                    ((EditText) findViewById(R.id.emailText)).getText().toString()
+                            );
 
-                        ContactDao contactDao = MyAppDatabase.getInstance(getApplicationContext()).getContactDao();
-                        long id = contactDao.insertContact(newContact);
-                        Log.d("inserimento "," ok ");
-                        Log.d(" - nome e cognome prima riga tabella "," "+contactDao.selectById(id).getName()+" "+contactDao.selectById(id).getSurname());
+                            ContactDao contactDao = MyAppDatabase.getInstance(getApplicationContext()).getContactDao();
+                            long id = contactDao.insertContact(newContact);
+                            Log.d("inserimento ", " ok ");
+                            Log.d(" - nome e cognome prima riga tabella ", " " + contactDao.selectById(id).getName() + " " + contactDao.selectById(id).getSurname());
 
-                        return null;
-                    }
-                }.execute();
+                            return null;
+                        }
+                    }.execute();
 
-                Intent i = new Intent();
-                setResult(-1, i);
-                finish();
+                    Intent i = new Intent();
+                    setResult(-1, i);
+                    finish();
+                }
             }
         });
 
     }
 
 
-    public void setListenerOnCancelButton (){
+    public void setListenerOnCancelButton() {
         View cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override

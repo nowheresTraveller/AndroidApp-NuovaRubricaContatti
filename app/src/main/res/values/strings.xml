@@ -24,7 +24,7 @@
     <string name="contact_modified_with_success">contatto modificato con successo</string>
     <string name="description_credits">Nuova rubrica contatti\nProdotto da Granatello_soft_inc\n2022-2023</string>
     <string name="add">aggiungi</string>
-
+    <string name="nametext_and_surnametext_empty">Inserire almeno un valore in nome e cognome</string>
 
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>

@@ -1,6 +1,5 @@
 package com.example.nuovaRubricaContatti.classes;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +51,8 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
         super.addAll(list);
         notifyDataSetChanged();
     }
+
+
 
 
     public class ViewHolder{

@@ -7,6 +7,8 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 //  "unique = true" = la coppia {name,surname} diventano una chiave
 @Entity(tableName = "contact",
         indices = { @Index("cellular_number"), @Index("email") , @Index(value={"name","surname"}, unique = true)}
@@ -15,7 +17,7 @@ import androidx.room.PrimaryKey;
         //ps: parentColumns= foreign key di questa tabella
         //, foreignKeys= @ForeignKey(entity=Pippo.class, childColumns="id" , parentColumns="pippo_id")
         )
-public class Contact {
+public class Contact implements Serializable {
 
     // "autoGenerate = true" = l'id è autoincrementale
     @PrimaryKey(autoGenerate = true)
@@ -62,10 +64,6 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setCampoIgnorato(String campoIgnorato) {
-        this.campoIgnorato = campoIgnorato;
     }
 
     public long getId() {

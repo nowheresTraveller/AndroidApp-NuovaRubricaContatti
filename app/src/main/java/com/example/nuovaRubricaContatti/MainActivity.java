@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,6 +26,7 @@ import android.widget.ListView;
 import android.Manifest.permission;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+
 import com.example.nuovaRubricaContatti.classes.ListContact;
 import com.example.nuovaRubricaContatti.classes.CustomAdapter;
 import com.example.nuovaRubricaContatti.classes.DialogEliminaContatto;
@@ -32,7 +34,7 @@ import com.example.nuovaRubricaContatti.data.entity.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        new AsyncTask <Void,Void,Void> (){
+        new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
                 customAdapter = new CustomAdapter(getApplicationContext(),
@@ -96,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
         addTextColorToLookButton();
         setListenerOnMyListView(myListView);
         setAddContactButton();
-
         super.onResume();
     }
 
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(getApplicationContext(), LookContactActivity.class);
-                        i.putExtra("position",position+1);
+                        i.putExtra("item", customAdapter.getItem(position));
                         startActivity(i);
                     }
                 });
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(getApplicationContext(), EditContactActivity.class);
-                        i.putExtra("position",position+1);
+                        i.putExtra("item", customAdapter.getItem(position));
                         startActivityForResult(i, EDIT_MODE);
                     }
                 });
@@ -152,8 +153,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         DialogEliminaContatto d = new DialogEliminaContatto();
-                        d.setIdContatto(position+1);
-                        d.show(getSupportFragmentManager(), "ViewHolder");}
+                        d.setIdContatto(position + 1);
+                        d.show(getSupportFragmentManager(), "ViewHolder");
+                    }
                 });
             }
         });
@@ -211,11 +213,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.itaElement:
                 Log.d(" - lingua cliccata ", " italiano");
                 break;
-
             case R.id.engElement:
                 Log.d(" - lingua cliccata ", " inglese");
                 break;
-
             case R.id.creditsItem:
                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = inflater.inflate(R.layout.popup_window_credits, null);
@@ -228,27 +228,23 @@ public class MainActivity extends AppCompatActivity {
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
                 getWindow().setAttributes(layoutParams);
 
-
                 //gestione evento "tocco" sul popup window
                 popupView.setOnTouchListener(new View.OnTouchListener() {
-
                     // chiude il popup window quando è toccato
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
-
                         popupWindow.dismiss();
                         return true;
                     }
                 });
+
                 break;
         }
         return true;
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent i) {
-
         if (requestCode == ADD_MODE && resultCode == RESULT_OK) {
             Toast toast = Toast.makeText(getApplicationContext(), R.string.contact_added_with_success, Toast.LENGTH_SHORT);
             toast.show();
@@ -257,16 +253,8 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), R.string.contact_modified_with_success, Toast.LENGTH_SHORT);
             toast.show();
         }
-
         super.onActivityResult(requestCode, resultCode, i);
     }
-
-
 }
 
-
-// -onSaveInstanceState();
-// -onBackPressed(); --> descrive il comportamento al premere del pulsante back.
-//                       Gli si può fare un override per personalizzare il comportamento. Badare che, quando si realizza l'override,
-//                       la sua ultima riga di codice deve essere "super.onBackPressed().
 

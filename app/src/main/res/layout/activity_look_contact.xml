@@ -8,6 +8,7 @@
     tools:context=".LookContactActivity">
 
     <LinearLayout
+        android:id="@+id/headLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,7 +28,7 @@
                 android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/contactImg"
@@ -55,98 +56,121 @@
 
 
         <!-- row row insert phone number-->
+
         <LinearLayout
+            android:id="@+id/secondInnerLinearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:orientation="horizontal"
-            android:paddingLeft="0.5dp"
-            android:paddingRight="0.5dp">
-
-            <TextView
-                android:id="@+id/labelCellNumberText2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/cellular_number_text"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/cellNumberText2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            android:paddingLeft="0.5dp"
-            android:paddingRight="0.5dp">
-
-            <TextView
-                android:id="@+id/labelHomeNumberText2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/home_number_text"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/homeNumberText2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            android:paddingLeft="0.5dp"
-            android:paddingRight="0.5dp">
-
-            <TextView
-                android:id="@+id/labelEmailText2"
-                android:layout_width="fill_parent"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/email_text"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/emailText2"
-                android:layout_width="fill_parent"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-        <!-- row buttons-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/okButton2"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="@string/ok"
-                android:textSize="10dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="0.5dp"
+                android:paddingRight="0.5dp">
+
+                <TextView
+                    android:id="@+id/labelCellNumberText2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cellular_number_text"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:background="@drawable/my_custom_borders"/>
+
+                <TextView
+                    android:id="@+id/cellNumberText2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:background="@drawable/my_custom_borders"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:paddingLeft="0.5dp"
+                android:paddingRight="0.5dp">
+
+                <TextView
+                    android:id="@+id/labelHomeNumberText2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/home_number_text"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:background="@drawable/my_custom_borders"/>
+
+                <TextView
+                    android:id="@+id/homeNumberText2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:background="@drawable/my_custom_borders"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:paddingLeft="0.5dp"
+                android:paddingRight="0.5dp">
+
+                <TextView
+                    android:id="@+id/labelEmailText2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/email_text"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:background="@drawable/my_custom_borders"/>
+
+                <TextView
+                    android:id="@+id/emailText2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:background="@drawable/my_custom_borders"/>
+
+            </LinearLayout>
+
+            <!-- row buttons-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/okButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/ok"
+                    android:textSize="10dp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
-
-
     </LinearLayout>
 
 </LinearLayout>
