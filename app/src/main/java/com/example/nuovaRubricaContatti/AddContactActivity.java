@@ -82,7 +82,6 @@ public class AddContactActivity extends AppCompatActivity {
                     new AsyncTask<Void, Void, Void>() {
                         @Override
                         protected Void doInBackground(Void... voids) {
-
                             Contact newContact = new Contact(
                                     ((EditText) findViewById(R.id.nameText)).getText().toString(),
                                     ((EditText) findViewById(R.id.surnameText)).getText().toString(),

@@ -25,12 +25,12 @@
     <string name="description_credits">Nuova rubrica contatti\nProdotto da Granatello_soft_inc\n2022-2023</string>
     <string name="add">aggiungi</string>
     <string name="nametext_and_surnametext_empty">Inserire almeno un valore in nome e cognome</string>
+    <string name="call">chiama</string>
+    <string name="sendSms">invia sms</string>
 
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
-
-
 
 
     <string-array name="sex">

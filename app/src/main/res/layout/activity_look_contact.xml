@@ -89,7 +89,8 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:textSize="18dp"
-                    android:background="@drawable/my_custom_borders"/>
+                    android:background="@drawable/my_custom_borders"
+                    android:textColor="@drawable/text_view_color"/>
             </LinearLayout>
 
 
@@ -118,7 +119,8 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:textSize="18dp"
-                    android:background="@drawable/my_custom_borders"/>
+                    android:background="@drawable/my_custom_borders"
+                    android:textColor="@drawable/text_view_color"/>
 
             </LinearLayout>
 
@@ -147,7 +149,8 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:textSize="18dp"
-                    android:background="@drawable/my_custom_borders"/>
+                    android:background="@drawable/my_custom_borders"
+                    android:textColor="@drawable/text_view_color"/>
 
             </LinearLayout>
 

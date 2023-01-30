@@ -25,6 +25,8 @@
     <string name="description_credits">New address book\nProduct by Granatello_soft_inc\n2022-2023</string>
     <string name="add">add</string>
     <string name="nametext_and_surnametext_empty">Insert an input among name and surname</string>
+    <string name="call">call</string>
+    <string name="sendSms">send a sms</string>
 
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
